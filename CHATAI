@@ -1,0 +1,47 @@
+import random
+import time
+
+# CHATAI : Begrüßung und einfache Interaktionen
+class CHATAI:
+    def __init__(self, name="CHATAI"):
+        self.name = name
+        self.responses = {
+            "hallo": ["Hallo, wie kann ich dir helfen?", "Hi! Was kann ich für dich tun?", "Hallo! Wie geht's?"],
+            "wie geht's": ["Mir geht's gut, danke der Nachfrage! Und dir?", "Ich bin bereit, dir zu helfen! Wie geht's dir?", "Alles bestens, danke! Wie geht es dir?"],
+            "hilfe": ["Ich bin hier, um dir zu helfen. Was möchtest du wissen?", "Was kann ich für dich tun?", "Was brauchst du? Ich stehe zur Verfügung!"],
+            "bye": ["Tschüss! Bis zum nächsten Mal!", "Auf Wiedersehen!", "Tschüss, pass auf dich auf!"]
+        }
+
+    # Methode zur Begrüßung
+    def greet(self):
+        print(f"{self.name}: Hallo! Ich bin {self.name}, dein virtueller Assistent. Wie kann ich dir helfen?")
+
+    # Methode, um die Antwort des Benutzers zu verarbeiten
+    def get_response(self, user_input):
+        # Konvertiere die Eingabe in Kleinbuchstaben, um die Suche zu erleichtern
+        user_input = user_input.lower()
+
+        # Durchsuche die Eingaben und finde passende Antworten
+        for key in self.responses:
+            if key in user_input:
+                return random.choice(self.responses[key])
+
+        return "Entschuldigung, das habe ich nicht verstanden. Kannst du das bitte anders formulieren?"
+
+    # Methode für das Chatten mit dem Benutzer
+    def chat(self):
+        self.greet()
+
+        while True:
+            user_input = input("Du: ")
+            if "bye" in user_input.lower():
+                print(f"{self.name}: {self.get_response('bye')}")
+                break
+            response = self.get_response(user_input)
+            print(f"{self.name}: {response}")
+            time.sleep(1)  # Verzögerung für eine realistischere Antwort
+
+# Hauptprogramm
+if __name__ == "__main__":
+    CHATAI = CHAT AI()
+    AI.chat()
